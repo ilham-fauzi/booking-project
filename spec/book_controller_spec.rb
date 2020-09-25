@@ -11,7 +11,7 @@ RSpec.describe Api::BookController, :type => :controller do
 
     describe "POST create book", :method do
         it "book schedule" do
-            book = Book.new
+            book = Book.new.stub(:book)
             post :create
             expect(assigns(:book)).to eq([book])
         end
