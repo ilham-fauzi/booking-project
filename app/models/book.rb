@@ -5,4 +5,7 @@ class Book < ApplicationRecord
     validates :status, presence: true
     validates :diaseases_desciption, presence: false
     validates :booked_date, presence: true
+    belongs_to :doctor
+    belongs_to :schedule
+    belongs_to :user
 end

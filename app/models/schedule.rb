@@ -3,6 +3,7 @@ class Schedule < ApplicationRecord
     validates :hospital_id, presence: true
     validates :start_time, presence: true
     validates :end_time, presence: true
-    has_one :doctor
-    has_one :hospital
+    belongs_to :doctor
+    belongs_to :hospital
+    belongs_to :book
 end

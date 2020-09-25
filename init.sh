@@ -12,5 +12,11 @@ then
 elif [ $newcommand == 'build' ] 
 then 
     docker-compose -d build
+elif [ $newcommand == 'migrate' ]
+then
+    docker-compose run web rails db:migrate
+elif [ $newcommand == 'seed' ]
+then
+    docker-compose run web rails db:seed
 fi
 exit 0
