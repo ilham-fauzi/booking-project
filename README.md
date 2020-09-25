@@ -98,11 +98,11 @@ To access API use port 3001 (***http://localhost:3001/***).
 ## Unit testing
 Running unit testing by console
 ```diff
---- My apologize for not being able to finish the unit testing. ----
+# My apologize for not being able to finish the unit testing.
 ```
 
 ## Final Thought
 ```diff
---- Thank you for giving an opportunity to do the test. Although this might be far from expectations, I did my best since this is my first time using ruby and rails framework. ---
+# Thank you for giving an opportunity to do the test. Although this might be far from expectations, I did my best since this is my first time using ruby and rails framework.
 ```
 
