@@ -20,7 +20,7 @@ $ cp .env.example .env
 
 
 ## Copy and paste this code to .env file
-shell
+```shell
 DATABASE_USER=
 DATABASE_PASSWORD=
 DATABASE_NAME=
@@ -32,38 +32,40 @@ RACK_ENV=development
 
 GITHUB_APP_ID=
 GITHUB_APP_SECRET=
+```
 
 
 ## Installation and Running the Program
 1. init and build docker then run database migration. 
 Start from this command:
 
-    shell
+```shell
     $ sh init.sh
     
     Then type `init`
     shell
     $ Enter your command: init
-    
+ ```   
 
 2. Data seed. Use command:
 
-    shell
+```shell
     $ sh init.sh
     
     Then type `seed`
     shell
     $ Enter your command: seed
-    
+```
 
 3. Start the application. Use command:
 
-    shell
+```shell
     $ sh init.sh
     
     Then type `run`
     shell
     $ Enter your command: run
+```
     
 4. Run your browser and type http://localhost:3001/ (Login page).
 
@@ -80,13 +82,14 @@ To access API use port 3001 (**http://localhost:3001/**).
 | api/book                | POST | Booking doctor schedule          | [Example body](#example-body) |
 
 #### Example Body
-json
+```json
 {   
     "doctor_id": 7,
     "hospital_id": 4,
     "booked_date": "2020-09-24 00:00",
     "user_id": 10
 }
+```
 
 ### API Schedule Route
 
