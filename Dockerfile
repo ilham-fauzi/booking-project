@@ -9,6 +9,7 @@ COPY .env /test-sehatqu/.env
 COPY Gemfile /test-sehatqu/Gemfile
 COPY Gemfile.lock /test-sehatqu/Gemfile.lock
 RUN bundle install
+RUN bundle exec rails webpacker:install
 COPY . /test-sehatqu
 
 # Add a script to be executed every time the container starts.

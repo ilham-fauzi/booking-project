@@ -5,7 +5,10 @@ read -p "Enter your command: " newcommand
 if [ $newcommand == 'init' ] 
 then
     docker-compose build
+    docker-compose run web build exec rails webpacker:install
+    docker-compose down
     docker-compose run web rails db:migrate
+    docker-compose down
     # docker-compose run web rails db:seed
 elif [ $newcommand == 'reload' ] 
 then
@@ -17,8 +20,10 @@ then
 elif [ $newcommand == 'migrate' ]
 then
     docker-compose run web rails db:migrate
+    docker-compose down
 elif [ $newcommand == 'seed' ]
 then
     docker-compose run web rails db:seed
+    docker-compose down
 fi
 exit 0
