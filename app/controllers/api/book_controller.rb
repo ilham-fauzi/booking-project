@@ -3,6 +3,7 @@ require 'time'
 module Api
     class BookController < ApplicationController
         skip_before_action :verify_authenticity_token
+        before_action :book_params
         def index
             begin
                 list_booked = Book.joins(:schedule, :doctor, :user).select('
@@ -30,14 +31,14 @@ module Api
                 # nama hari yang di booking
                 schedule_day = Time.parse(params[:booked_date]).strftime("%A")
                 # mencari schedule dokter dg criteria doctor_id, hospital_id dan nama hari
-                doctor_schedule = Schedule.where(doctor_id: params[:doctor_id], hospital_id: params[:hospital_id], day: schedule_day).take
+                doctor_schedule = Schedule.where(doctor_id: book_params[:doctor_id], hospital_id: book_params[:hospital_id], day: schedule_day).take
                 # jika schedule tidak ditemukan
                 if !doctor_schedule.present? then 
                     raise Exception.new "jadwal tidak ditemukan"
                 end
                 # mencari jumlah total pasin yang telah book di schedule di atas
                 booked_total = Book.where("schedule_id = :schedule_id AND DATE(booked_date) = :booked_date", {
-                    schedule_id: doctor_schedule[:id], booked_date: Date.parse(params[:booked_date])
+                    schedule_id: doctor_schedule[:id], booked_date: Date.parse(book_params[:booked_date])
                 }).count || 0
                 # jika total pasien telah mencapai jumlah 10 maka di tolak
                 if booked_total >= 10 then
@@ -51,12 +52,12 @@ module Api
                 # jika request schedule masih dibawah batasan waktu yang ditentukan
                 if request_schedule < schedule_start_time && TimeDifference.between(schedule_start_time, request_schedule).in_minutes >= 30 then
                     booked = Book.new({
-                        user_id: params[:user_id],
-                        doctor_id: params[:doctor_id],
+                        user_id: book_params[:user_id],
+                        doctor_id: book_params[:doctor_id],
                         schedule_id: doctor_schedule[:id],
-                        booked_date: params[:booked_date],
+                        booked_date: book_params[:booked_date],
                         status: 1,
-                        diaseases_desciption: params[:diaseases_desciption],
+                        diaseases_desciption: book_params[:diaseases_desciption],
                     })
                     if booked.save
                         render json: { status: 'SUCCESS', message: 'booking jadwal sukses', data: {}}, status: :ok
@@ -72,7 +73,15 @@ module Api
         private
 
         def book_params
-            params.require(:book).permit(:doctor_id, :hospital_id, :user_id, :book_time, :book_day)
+            begin
+                params.require(:doctor_id)
+                params.require(:hospital_id)
+                params.require(:user_id)
+                params.require(:booked_date)
+                params.require(:diaseases_desciption)
+            rescue Exception => e
+                render json: { status: 'ERROR', message: 'error parameters', data: e}, status: :bad_request
+            end
         end
     end
 end

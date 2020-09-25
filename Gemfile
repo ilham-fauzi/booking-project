@@ -26,8 +26,6 @@ gem 'multi_json', '1.15.0'
 
 gem 'time_difference'
 
-gem 'rspec'
-
 # Use Devise for authentication
 gem 'devise', '~> 4.2'
 # Use Omniauth Facebook plugin
@@ -50,6 +48,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -61,7 +61,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use Dotenv for environment variables
   gem 'dotenv', '~> 2.2.1'
-  gem 'pry'
   gem 'faker'
 end
 

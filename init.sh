@@ -11,7 +11,7 @@ then
     docker-compose up
 elif [ $newcommand == 'build' ] 
 then 
-    docker-compose -d build
+    docker-compose build
 elif [ $newcommand == 'migrate' ]
 then
     docker-compose run web rails db:migrate
