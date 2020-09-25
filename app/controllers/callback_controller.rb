@@ -12,9 +12,6 @@ class CallbackController < ApplicationController
 
     def github
         @user = User.create_from_provider_data(request.env['omniauth.auth'])
-        puts "============================"
-        puts request.env['omniauth.auth']
-        puts "============================"
         if @user.persisted?
             sign_in_and_redirect @user
             flash[:notice] = 'Success login using github account'

@@ -29,7 +29,8 @@ module Api
         def create
             begin
                 # nama hari yang di booking
-                schedule_day = Time.parse(params[:booked_date]).strftime("%A")
+                schedule_day = Time.parse(book_params[:booked_date]).strftime("%A")
+                
                 # mencari schedule dokter dg criteria doctor_id, hospital_id dan nama hari
                 doctor_schedule = Schedule.where(doctor_id: book_params[:doctor_id], hospital_id: book_params[:hospital_id], day: schedule_day).take
                 # jika schedule tidak ditemukan
@@ -74,11 +75,11 @@ module Api
 
         def book_params
             begin
-                params.require(:doctor_id)
-                params.require(:hospital_id)
-                params.require(:user_id)
-                params.require(:booked_date)
-                params.require(:diaseases_desciption)
+                params.require(:book).permit(:doctor_id, :hospital_id, :user_id, :booked_date, :diaseases_desciption)
+                # params.require(:hospital_id).permit(:doctor_id, :hospital_id, :user_id, :booked_date, :diaseases_desciption)
+                # params.require(:user_id).permit(:doctor_id, :hospital_id, :user_id, :booked_date, :diaseases_desciption)
+                # params.require(:booked_date).permit(:doctor_id, :hospital_id, :user_id, :booked_date, :diaseases_desciption)
+                # params.require(:diaseases_desciption).permit(:doctor_id, :hospital_id, :user_id, :booked_date, :diaseases_desciption)
             rescue Exception => e
                 render json: { status: 'ERROR', message: 'error parameters', data: e}, status: :bad_request
             end
