@@ -75,7 +75,8 @@ module Api
 
         def book_params
             begin
-                params.require(:book).permit(:doctor_id, :hospital_id, :user_id, :booked_date, :diaseases_desciption)
+                params.permit!
+                # params.require(:book).permit(:doctor_id, :hospital_id, :user_id, :booked_date, :diaseases_desciption)
                 # params.require(:hospital_id).permit(:doctor_id, :hospital_id, :user_id, :booked_date, :diaseases_desciption)
                 # params.require(:user_id).permit(:doctor_id, :hospital_id, :user_id, :booked_date, :diaseases_desciption)
                 # params.require(:booked_date).permit(:doctor_id, :hospital_id, :user_id, :booked_date, :diaseases_desciption)
