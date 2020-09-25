@@ -26,6 +26,8 @@ gem 'multi_json', '1.15.0'
 
 gem 'time_difference'
 
+gem 'rspec'
+
 # Use Devise for authentication
 gem 'devise', '~> 4.2'
 # Use Omniauth Facebook plugin
