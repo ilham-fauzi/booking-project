@@ -1,23 +1,23 @@
 # Basic Technical Test (M. Ilkham Fauzi)
 
 ## Prerequisites
-shell
+```shell
 - docker version : 19.03.12
 - ruby version : 2.7.1
 - rails version: 2.7.1
 - PostgreSQL: 12.2  
-
+```
 
 ## Clone
 clone this repo to your local using command
-shell
+```shell
 $ git clone git@github.com:ilham-fauzi/booking-project.git
 $ cd booking-project
-
+```
 ## Create .env file from existing .env.example file
-shell
+```shell
 $ cp .env.example .env
-
+```
 
 ## Copy and paste this code to .env file
 ```shell
@@ -34,46 +34,44 @@ GITHUB_APP_ID=
 GITHUB_APP_SECRET=
 ```
 
-
 ## Installation and Running the Program
 1. init and build docker then run database migration. 
 Start from this command:
 
-```shell
+    ```shell
     $ sh init.sh
-    
+    ```
     Then type `init`
-    shell
+    ```shell
     $ Enter your command: init
- ```   
+    ```
 
 2. Data seed. Use command:
 
-```shell
+    ```shell
     $ sh init.sh
-    
+    ```
     Then type `seed`
-    shell
+    ```shell
     $ Enter your command: seed
-```
+    ```
 
 3. Start the application. Use command:
 
-```shell
+    ```shell
     $ sh init.sh
-    
+    ```
     Then type `run`
-    shell
+    ```shell
     $ Enter your command: run
-```
-    
+    ```
 4. Run your browser and type http://localhost:3001/ (Login page).
 
 ## Login
 While you are at http://localhost:3001/ in your browser, you can either sign up using your email account or login directly using your Github account.
 
 ## API Documentation URL 
-To access API use port 3001 (**http://localhost:3001/**).
+To access API use port 3001 (***http://localhost:3001/***).
 
 ### API Book Route
 | Route                   | HTTP | DESC                             | Body                          |
@@ -90,7 +88,6 @@ To access API use port 3001 (**http://localhost:3001/**).
     "user_id": 10
 }
 ```
-
 ### API Schedule Route
 
 | Route                   | HTTP | DESC                             |
@@ -100,10 +97,12 @@ To access API use port 3001 (**http://localhost:3001/**).
 
 ## Unit testing
 Running unit testing by console
-
+```
 --- My apologize for not being able to finish the unit testing. ----
-
+```
 
 ## Final Thought
-
+```
 Thank you for giving an opportunity to do the test. Although this might be far from expectations, I did my best since this is my first time using ruby and rails framework.
+```
+
