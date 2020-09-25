@@ -10,7 +10,7 @@ then
     docker-compose down
     docker-compose run web rails db:migrate
     # docker-compose run web rails db:seed
-elif [ $newcommand == 'reload' ] 
+elif [ $newcommand == 'run' ] 
 then
     docker-compose down
     docker-compose up
